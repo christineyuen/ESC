@@ -41,16 +41,23 @@ save.sim <- function(setting, n, its, data_folder, seed) {
 #' \donttest{
 #' n = 512
 #' root.dir = "/Users/loktingyuen/Documents/sim_result/ts_classification_through_simulation/NN/512"
-#' setting.file = "/Users/loktingyuen/Library/Mobile Documents/com~apple~CloudDocs/PhD/ResNet-ESC/setting.csv"
+#' setting.file = "/Users/loktingyuen/Library/Mobile Documents/com~apple~CloudDocs/PhD/ESC/setting.csv"
 #' #save.sim.for.resnet(setting.file = setting.file, n = n, its = 1000, root.dir = root.dir)
 #' }
 save.sim.for.resnet <- function(setting.file, n = 512, its = 1000, root.dir) {
   settings <- get.settings(setting.file, n)
-  for(setting.name in names(settings)) {
+  for(setting.name in 1:length(settings)) {
+    print(setting.name)
     setting <- settings[[setting.name]]
+    setting.dir = file.path(root.dir, setting.name)
+    dir.create(setting.dir, showWarnings = FALSE)
+    dir.create(file.path(setting.dir, "sim_data"), showWarnings = FALSE)
     save(setting, file = file.path(root.dir, setting.name, "setting.RData"))
     for(i in 1:100) {
-      save.sim(setting = setting, n = n, its = its, data_folder = file.path(root.dir, setting.name, "sim_data", i), seed = i)
+      print(i)
+      data.dir <- file.path(root.dir, setting.name, "sim_data", i)
+      dir.create(data.dir, showWarnings = FALSE)
+      save.sim(setting = setting, n = n, its = its, data_folder = data.dir, seed = i)
     }
   }
 }
