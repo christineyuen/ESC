@@ -1,1 +1,1 @@
-The implementation of BIC methods and ES-ResNet will be available in this repository
+ES-ResNet is available in this repository. The implementation of BIC methods will be available later in this repository
