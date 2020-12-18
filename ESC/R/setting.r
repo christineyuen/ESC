@@ -44,5 +44,5 @@ sim.cps.func <- function(param){
 }
 
 sim.lm.func <- function(param){
-  return (arfima.sim(mod = param))
+  return (arfima.sim(mod = param, n = param$n))
 }

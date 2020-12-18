@@ -10,7 +10,7 @@ import sklearn.preprocessing
 
 def read_dataset(input_dir):
     return tuple(pd.read_csv(os.path.join(input_dir, file_name), header=None, index_col= None).values.copy() for file_name in ("x_sim.csv", "y_sim.csv", "x.csv", "y.csv"))
-    
+
 
 def create_directory(directory_path):
     if os.path.exists(directory_path):
@@ -38,7 +38,7 @@ def fit_classifier(dataset, classifier_name, output_directory):
     y_true = np.argmax(y_test, axis=1)
 
     if len(x_train.shape) == 2:  # if univariate
-        # add a dimension to make it multivariate with one dimension 
+        # add a dimension to make it multivariate with one dimension
         x_train = x_train.reshape((x_train.shape[0], x_train.shape[1], 1))
         x_test = x_test.reshape((x_test.shape[0], x_test.shape[1], 1))
 
@@ -84,22 +84,26 @@ def create_classifier(classifier_name, input_shape, nb_classes, output_directory
 ############################################### main
 
 # input
-root_dir = '/Users/loktingyuen/Library/Mobile Documents/com~apple~CloudDocs/PhD/ResNet-ESC'
+#root_dir = '/Users/loktingyuen/Library/Mobile Documents/com~apple~CloudDocs/PhD/ResNet-ESC'
+root_dir = '/Users/loktingyuen/Documents/sim_result/ts_classification_through_simulation/NN/512'
 classifier_name = 'resnet'
 data_sub_dir = 'sim_data'
 result_sub_dir = 'results'
-iter_i = str(1)
-dataset_name = str(1)
 
-# output_dir must end with "/"
-output_dir = os.path.join(root_dir, result_sub_dir, dataset_name, iter_i)+"/"
-input_dir = os.path.join(root_dir, data_sub_dir, dataset_name, iter_i)
-create_directory(output_dir)
+for i in range(1, 101):
+    for j in range(1, 23):
+        iter_i = str(i)
+        dataset_name = str(j)
 
-dataset = read_dataset(input_dir)
+        # output_dir must end with "/"
+        output_dir = os.path.join(root_dir, result_sub_dir, dataset_name, iter_i)+"/"
+        input_dir = os.path.join(root_dir, data_sub_dir, dataset_name, data_sub_dir, iter_i)
+        create_directory(output_dir)
 
-fit_classifier(dataset, classifier_name, output_dir)
+        dataset = read_dataset(input_dir)
 
-print('DONE')
+        fit_classifier(dataset, classifier_name, output_dir)
 
-create_directory(output_dir + '/DONE')
+        print('DONE')
+
+        create_directory(output_dir + '/DONE')
