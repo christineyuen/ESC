@@ -3,6 +3,7 @@
 export(arfima.sim)
 export(arma.cp.sim)
 export(es)
+export(get.bic)
 export(get.settings)
 export(save.sim)
 export(save.sim.for.resnet)

@@ -24,8 +24,10 @@ fit.cp <- function(x, max.p = 1, max.q = 1){
                       ma = get.coef(coefs = coefs, coef.name = "ma"),
                       sd = sqrt(mods[[i]]$sigma2),
                       mu = get.coef(coefs = coefs, coef.name = "intercept"),
-                      n = length(mods[[i]]$x))
+                      n = length(mods[[i]]$x),
+                      residuals = mods[[i]]$residuals)
   }
+  class(mods) <- "arma.cp"
   return (mods)
 }
 

@@ -25,8 +25,7 @@ Save simulated data
 \donttest{
 n = 512
 root.dir = "/Users/loktingyuen/Documents/sim_result/ts_classification_through_simulation/NN/512"
-setting.file = "/Users/loktingyuen/Library/Mobile Documents/com~apple~CloudDocs/PhD/ResNet-ESC/setting.csv"
-save.sim.for.resnet(setting.file = setting.file,
-n = n, its = 1000, root.dir = root.dir)
+setting.file = "/Users/loktingyuen/Library/Mobile Documents/com~apple~CloudDocs/PhD/ESC/setting.csv"
+#save.sim.for.resnet(setting.file = setting.file, n = n, its = 1000, root.dir = root.dir)
 }
 }
