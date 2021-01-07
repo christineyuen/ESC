@@ -1,3 +1,4 @@
+# Note in the thesis the arma sim is using the sim from LSW paper
 next.arma <- function(x, e, phi, theta, mu, sigma, last.i){
   ar.order <- length(phi)
   ma.order <- length(theta)
